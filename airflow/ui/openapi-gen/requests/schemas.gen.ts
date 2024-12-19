@@ -1652,6 +1652,11 @@ export const $DAGRunClearBody = {
       title: "Dry Run",
       default: true,
     },
+    only_failed: {
+      type: "boolean",
+      title: "Only Failed",
+      default: false,
+    },
   },
   type: "object",
   title: "DAGRunClearBody",
@@ -1718,14 +1723,7 @@ export const $DAGRunPatchStates = {
 export const $DAGRunResponse = {
   properties: {
     dag_run_id: {
-      anyOf: [
-        {
-          type: "string",
-        },
-        {
-          type: "null",
-        },
-      ],
+      type: "string",
       title: "Dag Run Id",
     },
     dag_id: {
