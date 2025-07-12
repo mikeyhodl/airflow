@@ -267,7 +267,7 @@ def get_imports_from_file(filepath: str):
     doc_node = ast.parse(content, filepath)
     import_names: set[str] = set()
     for current_node in ast.walk(doc_node):
-        if not isinstance(current_node, ast.Import | ast.ImportFrom):
+        if not isinstance(current_node, (ast.Import, ast.ImportFrom)):
             continue
         for alias in current_node.names:
             name = alias.name
@@ -446,8 +446,11 @@ class TestGoogleProviderProjectStructure(ExampleCoverageTest, AssetsCoverageTest
         "airflow.providers.google.cloud.operators.mlengine.MLEngineCreateModelOperator",
         "airflow.providers.google.cloud.operators.vertex_ai.generative_model.TextGenerationModelPredictOperator",
         "airflow.providers.google.marketing_platform.operators.GoogleDisplayVideo360CreateQueryOperator",
+        "airflow.providers.google.marketing_platform.operators.GoogleDisplayVideo360DeleteReportOperator",
         "airflow.providers.google.marketing_platform.operators.GoogleDisplayVideo360RunQueryOperator",
         "airflow.providers.google.marketing_platform.operators.GoogleDisplayVideo360DownloadReportV2Operator",
+        "airflow.providers.google.marketing_platform.operators.GoogleDisplayVideo360UploadLineItemsOperator",
+        "airflow.providers.google.marketing_platform.operators.GoogleDisplayVideo360DownloadLineItemsOperator",
         "airflow.providers.google.marketing_platform.sensors.GoogleDisplayVideo360RunQuerySensor",
         "airflow.providers.google.cloud.hooks.datacatalog.CloudDataCatalogHook",
         "airflow.providers.google.cloud.links.datacatalog.DataCatalogEntryGroupLink",
@@ -503,6 +506,14 @@ class TestGoogleProviderProjectStructure(ExampleCoverageTest, AssetsCoverageTest
         "airflow.providers.google.cloud.operators.vertex_ai.endpoint_service.UpdateEndpointOperator",
         "airflow.providers.google.cloud.operators.vertex_ai.batch_prediction_job.GetBatchPredictionJobOperator",
         "airflow.providers.google.cloud.operators.datacatalog.CloudDataCatalogDeleteEntryOperator",
+        "airflow.providers.google.marketing_platform.operators.display_video.GoogleDisplayVideo360CreateQueryOperator",
+        "airflow.providers.google.marketing_platform.operators.display_video.GoogleDisplayVideo360RunQueryOperator",
+        "airflow.providers.google.marketing_platform.operators.display_video.GoogleDisplayVideo360DeleteReportOperator",
+        "airflow.providers.google.marketing_platform.operators.display_video.GoogleDisplayVideo360DownloadReportV2Operator",
+        "airflow.providers.google.marketing_platform.operators.display_video.GoogleDisplayVideo360DownloadLineItemsOperator",
+        "airflow.providers.google.marketing_platform.operators.display_video.GoogleDisplayVideo360UploadLineItemsOperator",
+        "airflow.providers.google.marketing_platform.sensors.display_video.GoogleDisplayVideo360RunQuerySensor",
+        "airflow.providers.google.cloud.operators.vertex_ai.generative_model.DeleteExperimentRunOperator",
     }
 
     ASSETS_NOT_REQUIRED = {
